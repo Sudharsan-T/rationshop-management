@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "438802799730",
+    "firebase_url": "https://surello-56893.firebaseio.com",
+    "project_id": "surello-56893",
+    "storage_bucket": "surello-56893.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438802799730:android:0da77bf103e082c2e876eb",
+        "android_client_info": {
+          "package_name": "com.example.meh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438802799730-bfcm6chphnogakua26u0dahq1kepo769.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkKUlCtqexg4IdCRHltYiqEv2pvwzr2ZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438802799730-bfcm6chphnogakua26u0dahq1kepo769.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

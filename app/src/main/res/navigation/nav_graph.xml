@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.meh.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_LoginFragment_to_RegisterFragment"
+            app:destination="@id/RegisterFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.example.meh.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_RegisterFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DashboardFragment"
+        android:name="com.example.meh.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_DashboardFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_PurchaseFragment"
+            app:destination="@id/PurchaseFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_TokenFragment"
+            app:destination="@id/TokenFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_SalesFragment"
+            app:destination="@id/SalesFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_ReportFragment"
+            app:destination="@id/ReportFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_AdminFragment"
+            app:destination="@id/AdminFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_StockUpdatesFragment"
+            app:destination="@id/StockUpdatesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PurchaseFragment"
+        android:name="com.example.meh.PurchaseFragment"
+        android:label="Products Available"
+        tools:layout="@layout/fragment_purchase">
+        <action
+            android:id="@+id/action_PurchaseFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TokenFragment"
+        android:name="com.example.meh.TokenFragment"
+        android:label="Token Booking"
+        tools:layout="@layout/fragment_token" />
+
+    <fragment
+        android:id="@+id/SalesFragment"
+        android:name="com.example.meh.SalesFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_sales">
+        <action
+            android:id="@+id/action_SalesFragment_to_InvoiceFragment"
+            app:destination="@id/InvoiceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ReportFragment"
+        android:name="com.example.meh.ReportFragment"
+        android:label="Reports"
+        tools:layout="@layout/fragment_report" />
+
+    <fragment
+        android:id="@+id/AdminFragment"
+        android:name="com.example.meh.AdminFragment"
+        android:label="Manage Products"
+        tools:layout="@layout/fragment_admin" />
+
+    <fragment
+        android:id="@+id/CartFragment"
+        android:name="com.example.meh.CartFragment"
+        android:label="My Cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/InvoiceFragment"
+        android:name="com.example.meh.InvoiceFragment"
+        android:label="Invoice Summary"
+        tools:layout="@layout/fragment_invoice" />
+
+    <fragment
+        android:id="@+id/StockUpdatesFragment"
+        android:name="com.example.meh.StockUpdatesFragment"
+        android:label="Stock Log"
+        tools:layout="@layout/fragment_stock_updates" />
+
+</navigation>

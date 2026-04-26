@@ -7,7 +7,7 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="btn_log_in">Log In</string>
-    <string name="register_prompt">Don\'t have an account? Register</string>
+    <string name="register_prompt">Don\'t have an account? Register Now</string>
     <string name="login_successful">Logged in successfully</string>
     <string name="login_failed">Log in failed: %1$s</string>
     <string name="logout">Log Out</string>

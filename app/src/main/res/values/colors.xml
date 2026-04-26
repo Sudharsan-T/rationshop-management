@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- App palette -->
+    <color name="purple_bg">#EDE8FF</color>
+    <color name="purple_wave">#A090D4</color>
+    <color name="purple_wave_dark">#7B6CBD</color>
+    <color name="purple_primary">#3D2AB5</color>
+    <color name="purple_button">#2E1FA8</color>
+    <color name="purple_light">#C4BAF0</color>
+    <color name="purple_surface">#F5F2FF</color>
+    <color name="purple_card_bg">#EAE4FF</color>
+    <color name="text_dark">#1C1466</color>
+    <color name="text_medium">#6A6A9A</color>
+    <color name="text_hint">#B0AACE</color>
+    <color name="icon_green">#2ECC71</color>
+    <color name="icon_orange">#FF8C42</color>
+    <color name="divider_light">#D0C8F0</color>
 </resources>

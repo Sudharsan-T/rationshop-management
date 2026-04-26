@@ -39,12 +39,13 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.LoginFragment, R.id.DashboardFragment))
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.SplashFragment, R.id.LoginFragment, R.id.DashboardFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.LoginFragment || 
-                destination.id == R.id.RegisterFragment || 
+            if (destination.id == R.id.SplashFragment ||
+                destination.id == R.id.LoginFragment ||
+                destination.id == R.id.RegisterFragment ||
                 destination.id == R.id.DashboardFragment) {
                 binding.toolbar.visibility = View.GONE
             } else {

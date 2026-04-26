@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+    <!-- Shop front -->
+    <path
+        android:fillColor="@color/icon_green"
+        android:pathData="M4,14v14h24V14H4zm10,12H8v-6h6v6zm10,0h-6v-6h6v6z" />
+    <!-- Awning -->
+    <path
+        android:fillColor="@color/icon_green"
+        android:pathData="M2,6l2,8h6V6H2zm10,8h6V6h-6v8zm8,0h6l2,-8h-8v8z" />
+</vector>

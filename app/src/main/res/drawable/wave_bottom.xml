@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="300dp"
+    android:viewportWidth="360"
+    android:viewportHeight="300">
+
+    <!-- Back wave (lighter) -->
+    <path
+        android:fillColor="#BDB0E8"
+        android:pathData="M 0,300 L 360,300 L 360,80 C 285,60 210,105 135,72 C 70,44 30,85 0,72 Z" />
+
+    <!-- Front wave (darker) -->
+    <path
+        android:fillColor="#7B6CBD"
+        android:pathData="M 0,300 L 360,300 L 360,110 C 290,88 215,135 145,102 C 78,70 35,112 0,100 Z" />
+
+    <!-- Dot grid bottom-left -->
+    <path android:fillColor="#9080C4" android:pathData="M16,240 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M32,240 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M48,240 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M16,256 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M32,256 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M48,256 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M16,272 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M32,272 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+    <path android:fillColor="#9080C4" android:pathData="M48,272 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"/>
+
+    <!-- Leaf bottom-left -->
+    <path
+        android:fillColor="#9080C4"
+        android:pathData="M 40,210 C 24,198 18,174 32,166 C 36,183 46,198 58,206 C 52,215 44,218 40,210 Z" />
+    <path
+        android:fillColor="#9080C4"
+        android:pathData="M 18,235 C 4,222 -2,196 14,188 C 18,206 30,222 44,230 C 36,240 22,243 18,235 Z" />
+
+    <!-- Leaf bottom-right -->
+    <path
+        android:fillColor="#9080C4"
+        android:pathData="M 318,195 C 332,183 340,160 326,152 C 322,170 312,184 300,192 C 306,202 314,204 318,195 Z" />
+    <path
+        android:fillColor="#9080C4"
+        android:pathData="M 338,215 C 352,202 358,178 344,170 C 340,188 328,204 314,212 C 320,222 334,224 338,215 Z" />
+
+    <!-- Circle decoration right -->
+    <path
+        android:fillColor="#BDB0E850"
+        android:pathData="M 360,60 m -30,0 a 30,30 0 1,0 60,0 a 30,30 0 1,0 -60,0 Z" />
+</vector>

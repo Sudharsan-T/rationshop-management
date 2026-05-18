@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Meh</string>
+    <string name="app_name">ENHANCED RATION SHOP MANAGEMENT SYSTEM</string>
     <string name="action_settings">Settings</string>
 
     <string name="welcome_user">Welcome, %1$s</string>
-    <string name="login_title">Ration Shop Log In</string>
+    <string name="login_title">ENHANCED RATION SHOP MANAGEMENT SYSTEM</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="btn_log_in">Log In</string>

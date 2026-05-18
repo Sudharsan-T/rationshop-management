@@ -41,7 +41,7 @@ class InventoryAdapter(
                 val amountStr = binding.etAddAmount.text.toString()
                 if (amountStr.isNotEmpty()) {
                     onAddStock(product, amountStr.toInt())
-                    binding.etAddAmount.text.clear()
+                    binding.etAddAmount.text?.clear()
                 }
             }
 

@@ -28,13 +28,37 @@
             android:text="Slot: 10:00 AM - 11:00 AM"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tvTokenStatus"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Status: BOOKED"
-            android:textSize="12sp"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvTokenStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Status: BOOKED"
+                android:textSize="12sp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:gravity="center_vertical" />
+
+            <Button
+                android:id="@+id/btnCancelToken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#E53935"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

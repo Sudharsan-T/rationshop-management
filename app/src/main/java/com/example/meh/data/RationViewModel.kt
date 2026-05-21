@@ -277,6 +277,19 @@ class RationViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    fun cancelToken(tokenId: Int) {
+        viewModelScope.launch {
+            val snapshot = db.child("tokens").get().await()
+            for (child in snapshot.children) {
+                val t = child.getValue(Token::class.java)
+                if (t?.id == tokenId) {
+                    child.ref.removeValue().await()
+                    break
+                }
+            }
+        }
+    }
+
     fun canUserBuy(productId: Int, userId: String, requestedQuantity: Double): Pair<Boolean, String> {
         val products = allProducts.value ?: return false to "Products not loaded"
         val product = products.find { it.id == productId } ?: return false to "Product not found"

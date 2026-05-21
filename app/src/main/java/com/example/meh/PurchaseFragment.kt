@@ -33,22 +33,22 @@ class PurchaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = viewModel.currentUser.value
-        // Staff members (Admin or Shopkeeper) should not be able to buy
-        val isStaff = user?.role == "ADMIN" || user?.role == "SHOPKEEPER"
-
-        // Hide cart button for staff
-        binding.fabGoToCart.visibility = if (isStaff) View.GONE else View.VISIBLE
-
-        val adapter = ProductAdapter(isStaff) { product, delta ->
-            val result = viewModel.updateCartQuantity(product.id, delta)
-            if (!result.first) {
-                Toast.makeText(context, result.second, Toast.LENGTH_SHORT).show()
-            }
-        }
-
         binding.rvProducts.layoutManager = LinearLayoutManager(context)
-        binding.rvProducts.adapter = adapter
+
+        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
+            val isStaff = user?.role == "ADMIN" || user?.role == "SHOPKEEPER"
+            binding.fabGoToCart.visibility = if (isStaff) View.GONE else View.VISIBLE
+
+            val adapter = ProductAdapter(isStaff) { product, delta ->
+                val result = viewModel.updateCartQuantity(product.id, delta)
+                if (!result.first) {
+                    Toast.makeText(context, result.second, Toast.LENGTH_SHORT).show()
+                }
+            }
+            binding.rvProducts.adapter = adapter
+            adapter.setCartItems(viewModel.cartItems.value ?: emptyList())
+            updateUI(allProductsList)
+        }
 
         viewModel.allProducts.observe(viewLifecycleOwner) { products ->
             allProductsList = products
@@ -56,7 +56,7 @@ class PurchaseFragment : Fragment() {
         }
 
         viewModel.cartItems.observe(viewLifecycleOwner) { items ->
-            adapter.setCartItems(items)
+            (binding.rvProducts.adapter as? ProductAdapter)?.setCartItems(items)
         }
 
         binding.etSearch.addTextChangedListener(object : TextWatcher {

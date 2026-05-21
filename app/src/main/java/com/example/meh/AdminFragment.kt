@@ -35,30 +35,29 @@ class AdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = viewModel.currentUser.value
-        val userRole = user?.role ?: "SHOPKEEPER"
-
-        // Initialize adapter with callbacks for Add, Edit, and Delete
-        val adapter = InventoryAdapter(
-            userRole = userRole,
-            onAddStock = { product, addedAmount ->
-                viewModel.updateStock(product.id, addedAmount)
-                Toast.makeText(context, "Added $addedAmount to ${product.name}", Toast.LENGTH_SHORT).show()
-            },
-            onEditProduct = { product ->
-                showEditProductDialog(product)
-            },
-            onDeleteProduct = { product ->
-                showDeleteConfirmation(product)
-            }
-        )
-
         binding.rvInventory.layoutManager = LinearLayoutManager(context)
-        binding.rvInventory.adapter = adapter
 
-        // Observe product list from ViewModel
+        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
+            val userRole = user?.role ?: "SHOPKEEPER"
+            val adapter = InventoryAdapter(
+                userRole = userRole,
+                onAddStock = { product, addedAmount ->
+                    viewModel.updateStock(product.id, addedAmount)
+                    Toast.makeText(context, "Added $addedAmount to ${product.name}", Toast.LENGTH_SHORT).show()
+                },
+                onEditProduct = { product ->
+                    showEditProductDialog(product)
+                },
+                onDeleteProduct = { product ->
+                    showDeleteConfirmation(product)
+                }
+            )
+            binding.rvInventory.adapter = adapter
+            adapter.submitList(viewModel.allProducts.value)
+        }
+
         viewModel.allProducts.observe(viewLifecycleOwner) { products ->
-            adapter.submitList(products)
+            (binding.rvInventory.adapter as? InventoryAdapter)?.submitList(products)
         }
     }
 

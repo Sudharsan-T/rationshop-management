@@ -51,7 +51,7 @@ class TokenFragment : Fragment() {
         }
 
         // Setup the list to display tokens
-        val tokenAdapter = TokenAdapter()
+        var tokenAdapter = TokenAdapter()
         binding.rvTokens.layoutManager = LinearLayoutManager(context)
         binding.rvTokens.adapter = tokenAdapter
 
@@ -59,33 +59,36 @@ class TokenFragment : Fragment() {
         viewModel.currentUser.observe(viewLifecycleOwner) { user ->
             if (user != null) {
                 val isStaff = user.role == "ADMIN" || user.role == "SHOPKEEPER"
-                
+
                 if (isStaff) {
-                    // Staff members see the log of all scheduled tokens and cannot book new ones
+                    tokenAdapter = TokenAdapter()
+                    binding.rvTokens.adapter = tokenAdapter
                     binding.tvTokenTitle.text = "Bookings"
                     binding.tvSelectSlotLabel.visibility = View.GONE
                     binding.btnBookToken.visibility = View.GONE
                     binding.spinnerSlots.visibility = View.GONE
                     binding.calendarView.visibility = View.GONE
                     binding.tvListHeader.text = "All Bookings:"
-                    
-                    viewModel.allTokens.observe(viewLifecycleOwner) { tokens ->
-                        tokenAdapter.submitList(tokens)
-                    }
                 } else {
-                    // Customers see booking controls and only their own tokens
+                    tokenAdapter = TokenAdapter(onCancel = { token ->
+                        viewModel.cancelToken(token.id)
+                    })
+                    binding.rvTokens.adapter = tokenAdapter
                     binding.tvTokenTitle.text = "Book Your Token"
                     binding.tvSelectSlotLabel.visibility = View.VISIBLE
                     binding.btnBookToken.visibility = View.VISIBLE
                     binding.spinnerSlots.visibility = View.VISIBLE
                     binding.calendarView.visibility = View.VISIBLE
                     binding.tvListHeader.text = "Your Bookings:"
-                    
-                    viewModel.allTokens.observe(viewLifecycleOwner) { tokens ->
-                        tokenAdapter.submitList(tokens.filter { it.userId == user.uid })
-                    }
                 }
             }
+        }
+
+        // Single tokens observer — filters based on current user to avoid stacking observers
+        viewModel.allTokens.observe(viewLifecycleOwner) { tokens ->
+            val user = viewModel.currentUser.value ?: return@observe
+            val isStaff = user.role == "ADMIN" || user.role == "SHOPKEEPER"
+            tokenAdapter.submitList(if (isStaff) tokens else tokens.filter { it.userId == user.uid })
         }
 
         // Handle booking action

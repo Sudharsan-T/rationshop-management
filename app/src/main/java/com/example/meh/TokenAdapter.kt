@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.meh.data.Token
 import com.example.meh.databinding.ItemTokenBinding
 
-class TokenAdapter : ListAdapter<Token, TokenAdapter.TokenViewHolder>(TokenDiffCallback()) {
+class TokenAdapter(
+    private val onCancel: ((Token) -> Unit)? = null
+) : ListAdapter<Token, TokenAdapter.TokenViewHolder>(TokenDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TokenViewHolder {
         val binding = ItemTokenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,6 +27,13 @@ class TokenAdapter : ListAdapter<Token, TokenAdapter.TokenViewHolder>(TokenDiffC
             binding.tvTokenDate.text = "Date: ${token.date}"
             binding.tvTokenSlot.text = "Slot: ${token.slot}"
             binding.tvTokenStatus.text = "Status: ${token.status}"
+
+            if (onCancel != null && token.status == "BOOKED") {
+                binding.btnCancelToken.visibility = android.view.View.VISIBLE
+                binding.btnCancelToken.setOnClickListener { onCancel.invoke(token) }
+            } else {
+                binding.btnCancelToken.visibility = android.view.View.GONE
+            }
         }
     }
 
